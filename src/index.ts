@@ -5,6 +5,7 @@ import status from "http-status";
 import { errorHandler } from "./middlewares/errorHandler";
 import playerRouter from "./routes/player.route";
 import gameRouter from "./routes/game.route";
+import dashboardRouter from "./routes/dashboard.route";
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/players", playerRouter);
 app.use("/api/game", gameRouter);
+app.use("/api/dashboard", dashboardRouter);
 
 app.use(errorHandler);
 
