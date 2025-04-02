@@ -10,11 +10,17 @@ export const addPlayerService = async (player: Prisma.PlayerCreateInput) => {
 };
 
 export const updatePlayerService = async (
-  id: number,
+  id: string,
   player: Prisma.PlayerUpdateInput
 ) => {
   return await db.player.update({
     where: { id },
     data: player,
+  });
+};
+
+export const getPlayerInfoService = async (id: string) => {
+  return await db.player.findUnique({
+    where: { id },
   });
 };

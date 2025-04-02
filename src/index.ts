@@ -4,6 +4,7 @@ import config from "./config/config";
 import status from "http-status";
 import { errorHandler } from "./middlewares/errorHandler";
 import playerRouter from "./routes/player.route";
+import gameRouter from "./routes/game.route";
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/players", playerRouter);
+app.use("/api/game", gameRouter);
 
 app.use(errorHandler);
 
