@@ -13,7 +13,10 @@ export const getAllPlayers = async (
 ) => {
   try {
     const data = await getAllPlayersService();
-    res.status(status.OK).json(data);
+    const response = data.map((player) => {
+      return { id: player.id, name: player.name };
+    });
+    res.status(status.OK).json(response);
   } catch (error) {
     next(error);
   }
