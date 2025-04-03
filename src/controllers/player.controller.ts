@@ -28,7 +28,7 @@ export const addPlayer = async (
   next: NextFunction
 ) => {
   try {
-    const data: Player = await addPlayerService(req.body);
+    const data = await addPlayerService(req.body);
     res.status(status.OK).json(data);
   } catch (error) {
     next(error);

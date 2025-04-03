@@ -4,15 +4,15 @@ import { getPlayerInfoService, updatePlayerService } from "./player.service";
 export const saveGameService = async (saveGameData: SaveGameDTO) => {
   const { player1Id, player2Id, score1, score2 } = saveGameData;
 
-  if (player1Id == player2Id) {
-    throw new Error("Choose two different players");
-  }
-
   const player1Data = await getPlayerInfoService(player1Id);
   const player2Data = await getPlayerInfoService(player2Id);
 
   if (!player1Data || !player2Data) {
     throw new Error("Given player(s) not found");
+  }
+
+  if (player1Id == player2Id) {
+    throw new Error("Choose two different players");
   }
 
   player1Data.gamesPlayed += 1;

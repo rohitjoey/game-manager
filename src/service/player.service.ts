@@ -6,7 +6,10 @@ export const getAllPlayersService = async () => {
 };
 
 export const addPlayerService = async (player: Prisma.PlayerCreateInput) => {
-  return await db.player.create({ data: player });
+  return await db.player.create({
+    data: player,
+    select: { id: true, name: true },
+  });
 };
 
 export const updatePlayerService = async (
