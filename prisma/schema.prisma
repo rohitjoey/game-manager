@@ -24,7 +24,8 @@ model Player {
   gamesLost      Int      @default(0)
   goalsScored    Int      @default(0)
   goalsConceeded Int      @default(0)
+  gd             Int      @default(0)
+  ratio          Float    @default(0.00)
+
   @@map("players")
 }
-
-

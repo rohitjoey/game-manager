@@ -29,6 +29,16 @@ export const saveGameService = async (saveGameData: SaveGameDTO) => {
     player1Data.gamesLost += 1;
   }
 
+  player1Data.gd = player1Data.goalsScored - player1Data.goalsConceeded;
+  player1Data.ratio = Number(
+    (player1Data.gamesWon / player1Data.gamesPlayed).toFixed(2)
+  );
+
+  player2Data.gd = player2Data.goalsScored - player2Data.goalsConceeded;
+  player2Data.ratio = Number(
+    (player2Data.gamesWon / player2Data.gamesPlayed).toFixed(2)
+  );
+
   await updatePlayerService(player1Id, player1Data);
   await updatePlayerService(player2Id, player2Data);
 

@@ -2,7 +2,9 @@ import { Prisma } from "../../generated/prisma";
 import { db } from "../db";
 
 export const getAllPlayersService = async () => {
-  return await db.player.findMany();
+  return await db.player.findMany({
+    orderBy: [{ ratio: "desc" }, { gd: "desc" }],
+  });
 };
 
 export const addPlayerService = async (player: Prisma.PlayerCreateInput) => {
