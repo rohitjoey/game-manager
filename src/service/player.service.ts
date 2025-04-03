@@ -1,9 +1,11 @@
 import { Prisma } from "../../generated/prisma";
 import { db } from "../db";
 
-export const getAllPlayersService = async () => {
+export const getAllPlayersService = async (selectForGame: boolean = false) => {
+  const selectFields = selectForGame ? { id: true, name: true } : undefined;
   return await db.player.findMany({
     orderBy: [{ ratio: "desc" }, { gd: "desc" }],
+    select: selectFields,
   });
 };
 

@@ -12,11 +12,8 @@ export const getAllPlayers = async (
   next: NextFunction
 ) => {
   try {
-    const data = await getAllPlayersService();
-    const response = data.map((player) => {
-      return { id: player.id, name: player.name };
-    });
-    res.status(status.OK).json(response);
+    const data = await getAllPlayersService(true);
+    res.status(status.OK).json(data);
   } catch (error) {
     next(error);
   }
