@@ -6,8 +6,6 @@ import { errorHandler } from "./middlewares/errorHandler";
 import playerRouter from "./routes/player.route";
 import gameRouter from "./routes/game.route";
 import dashboardRouter from "./routes/dashboard.route";
-import swaggerUi from "swagger-ui-express";
-import { openapiSpecification } from "./lib/docs";
 
 const app = express();
 
@@ -21,8 +19,6 @@ app.get("/", (req, res) => {
 app.use("/api/players", playerRouter);
 app.use("/api/game", gameRouter);
 app.use("/api/dashboard", dashboardRouter);
-
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 
 app.use(errorHandler);
 
